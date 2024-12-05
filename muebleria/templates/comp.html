@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Producto</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="encabezado">
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#quienes-somos">Quiénes somos</a></li>
+                <li><a href="#contacto-usuario">Contacto</a></li>
+                <li><a href="#galeria-productos">Productos</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <section id="detalle-producto">
+        <h1>Detalles del Producto</h1>
+        <div class="producto-detalle">
+            <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" width="500">
+            <h3>{{ producto.nombre }}</h3>
+            <p>Precio: ${{ producto.precio }}</p>
+            <p>Descripción: {{ producto.descripcion }}</p>
+            <p>Color: {{ producto.color }}</p>
+
+            <!-- Aquí podrías agregar un formulario o lógica para agregar al carrito -->
+            <form method="post">
+                {% csrf_token %}
+                <input type="submit" value="Comprar" class="btn-comprar">
+            </form>
+        </div>
+    </section>
+
+    <section id="otros-productos">
+        <h2>Otros productos que te pueden interesar</h2>
+        <div class="galeria">
+            <!-- Puedes agregar aquí otros productos relacionados -->
+            {% for otro_producto in otros_productos %}
+                <div class="productos">
+                    <img src="{{ otro_producto.imagen.url }}" alt="{{ otro_producto.nombre }}" width="500">
+                    <h3>{{ otro_producto.nombre }}</h3>
+                    <p>Precio: ${{ otro_producto.precio }}</p>
+                    <a href="{% url 'comp' producto_id=otro_producto.id %}"><input type="button" value="Comprar"></a>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+</body>
+</html>

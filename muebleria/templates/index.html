@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mueblería</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="encabezado">
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#quienes-somos">Quiénes somos</a></li>
+                <li><a href="#contacto-usuario">Contacto</a></li>
+                <li><a href="#galeria-productos">Productos</a></li>
+            </ul>
+        </nav>
+
+        <div class="slider">
+            <img src="{% static 'assets/imagenes/Logo.jpg' %}" alt="Portada 1" class="slide active">
+            <img src="{% static 'assets/imagenes/Logo1.jpg' %}" alt="Portada 2" class="slide">
+        </div>
+    </div>
+    <script src="{% static 'js/slider.js' %}"></script>
+
+    <section>
+        <h1>Página Principal</h1>
+        <p id="parrafos">Esta página contiene información sobre una mueblería.</p>
+    </section>
+
+
+    <section id="galeria-productos">
+        <h1>Productos</h1>
+        <p>Esta sección contiene información sobre los productos.</p>
+        <div class="galeria">
+            <div class="productos">
+                <img class="producto-imagen" src="{% static 'assets/imagenes/images.jpeg' %}" alt="Silla de madera café para comedor" width="500">
+                <h3>SILLA</h3>
+                <p>$100.00</p>
+                <p>Café</p>
+                <a href="{% url 'comp' producto_id=1 %}"><input type="button" value="Comprar"></a>
+            </div>
+
+            <div class="productos">
+                <img class="producto-imagen" src="{% static 'assets/imagenes/silla-madera.jpg' %}" alt="Silla de madera café claro" width="500">
+                <h3>SILLA DE MADERA</h3>
+                <p>$120.00</p>
+                <p>Café claro</p>
+                <a href="{% url 'comp' producto_id=2 %}"><input type="button" value="Comprar"></a>
+            </div>
+
+            <div class="productos">
+                <img class="producto-imagen" src="{% static 'assets/imagenes/sillon.jpg' %}" alt="Sillón de dos plazas" width="500">
+                <h3>SILLÓN</h3>
+                <p>$350.00</p>
+                <p>Verde</p>
+                <a href="{% url 'comp' producto_id=3 %}"><input type="button" value="Comprar"></a>
+            </div>
+
+            <div class="productos">
+                <img class="producto-imagen" src="{% static 'assets/imagenes/mesa.jpg' %}" alt="Mesa de comedor de madera" width="500">
+                <h3>MESA DE COMEDOR</h3>
+                <p>$500.00</p>
+                <p>Madera oscura</p>
+                <a href="{% url 'comp' producto_id=4 %}"><input type="button" value="Comprar"></a>
+            </div>
+
+            <div class="productos">
+                <img class="producto-imagen" src="{% static 'assets/imagenes/armario.jpg' %}" alt="Armario ropero de madera" width="500">
+                <h3>ARMARIO</h3>
+                <p>$700.00</p>
+                <p>Madera clara</p>
+                <a href="{% url 'comp' producto_id=5 %}"><input type="button" value="Comprar"></a>
+            </div>
+
+            <div class="productos">
+                <img class="producto-imagen" src="{% static 'assets/imagenes/silla-comedor.jpg' %}" alt="Silla de comedor" width="500">
+                <h3>SILLA DE COMEDOR</h3>
+                <p>$150.00</p>
+                <p>Beige</p>
+                <a href="{% url 'comp' producto_id=6 %}"><input type="button" value="Comprar"></a>
+            </div>
+
+            <!-- Puedes agregar más productos si es necesario -->
+
+        </div>
+    </section>
+    
+    <!-- Botón para agregar un producto -->
+    <a href="{% url 'agregar_producto' %}">
+        <button>Agregar Producto</button>
+    </a>
+
+    <section id="quienes-somos">
+        <h2>¿Quiénes somos?</h2>
+        <ul>
+            <li>Mueblería con productos de alta calidad.</li>
+            <li>Ofrecemos la mejor calidad y atención al cliente.</li>
+            <li>¡Aprovecha nuestras ofertas!</li>
+        </ul>
+    </section>
+
+    <section id="contacto-usuario">
+        <h2>Contacto</h2>
+        <form action="#" method="post" id="formulario">
+            <div id="form">
+                <label for="name">Ingresa tu nombre:</label>
+                <input type="text" id="name" name="name" required><br>
+                <label for="email">Ingresa tu correo electrónico:</label>
+                <input type="email" id="email" name="email" required><br>
+                <label for="message">Ingresa un mensaje:</label>
+                <textarea id="message" name="message" rows="4"></textarea><br>
+                <input id="boton1" type="submit" value="Enviar Formulario">
+            </div>
+        </form>
+    </section>
+
+    <script src="{% static 'slider.js' %}"></script>
+</body>
+</html>
